@@ -17,3 +17,8 @@ RUN cd && \
 ADD bashrc /tmp
 RUN cat /tmp/bashrc >> ~/.bashrc
 RUN rm /tmp/bashrc
+ENV PATH=$PATH:~/nim/bin/
+
+# install packages
+RUN cd && \
+    ~/nim/bin/nimble install -y c2nim jester
