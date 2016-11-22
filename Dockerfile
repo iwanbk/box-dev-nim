@@ -12,3 +12,8 @@ RUN cd && \
 	cd ~/.vim/bundle && \
 	git clone git://github.com/zah/nim.vim.git && \
 	git clone https://github.com/scrooloose/syntastic.git
+
+#env variables
+ADD bashrc /tmp
+RUN cat /tmp/bashrc >> ~/.bashrc
+RUN rm /tmp/bashrc
