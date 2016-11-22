@@ -22,3 +22,7 @@ ENV PATH=$PATH:~/nim/bin/
 # install packages
 RUN cd && \
     ~/nim/bin/nimble install -y c2nim jester
+
+# install vim with py2
+RUN apt-get install -y vim-nox-py2 && \
+    update-alternatives --set vim /usr/bin/vim.nox-py2
