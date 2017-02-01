@@ -1,12 +1,14 @@
 FROM iwanbk/box-dev-ubuntu1604
 MAINTAINER Iwan Budi Kusnanto <iwanbk@gmail.com>
 RUN cd && \
-	wget http://nim-lang.org/download/nim-0.15.2.tar.xz && \
-	tar xf nim-0.15.2.tar.xz && \
-	mv nim-0.15.2 nim && \
+	wget https://nim-lang.org/download/nim-0.16.0.tar.xz && \
+	tar xf nim-0.16.0.tar.xz  && \
+	mv nim-0.16.0 nim && \
 	cd nim && \
 	sh build.sh && \
-	./bin/nim e install_tools.nims && \
+	./bin/nim c koch && \
+	mv koch ./bin/ && \
+	./bin/koch tools && \
 
 	# vim nim
 	cd ~/.vim/bundle && \
@@ -24,5 +26,5 @@ RUN cd && \
     ~/nim/bin/nimble install -y c2nim jester
 
 # install vim with py2
-RUN apt-get install -y vim-nox-py2 && \
+RUN apt-get update && apt-get install -y vim-nox-py2 && \
     update-alternatives --set vim /usr/bin/vim.nox-py2
